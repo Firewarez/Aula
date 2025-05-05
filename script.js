@@ -34,7 +34,7 @@ let botao = document.getElementById("button");
 let contador = 0;
 let contadorTexto = document.getElementById("contador");
 let contadorDiv = document.getElementById("contadora");
-
+let autoClickPower = 0;
 let clickerHelperLevel = 0;
 let clickerHelperMax = 5;
 let autoClickInterval;
@@ -73,7 +73,11 @@ const upgrades = [
         level: 0,
         levelsValue: [0, 1, 2, 3, 10, 15],
         maxLevel: 5,
+        getAutoClickValue: function () {
+            return this.levelsValue[this.level] || 0;
+        },
         effect: function () {
+            recalculateAutoClickPower();
             updateAutoClicker(); // o efeito deste upgrade
         }
     },
@@ -87,9 +91,11 @@ const upgrades = [
         costMultiplier: 2.0,
         level: 0,
         maxLevel: 3,
+        getAutoClickValue: function () {
+            return this.level * 5; // 5 cliques por nível
+        },
         effect: function () {
-            contador += 10; // Exemplo: dá 10 cliques instantaneamente
-            updateCounterDisplay();
+            recalculateAutoClickPower();
         }
     },
     {
@@ -102,9 +108,13 @@ const upgrades = [
         costMultiplier: 2,
         level: 0,
         maxLevel: 3,
+        getAutoClickValue: function () {
+            return this.level * 10; // 10 cliques por nível
+        },
         effect: function () {
-            contador += 25; // efeito personalizado
-            updateCounterDisplay();
+            recalculateAutoClickPower();
+            document.body.style.backgroundColor = "#1abc9c";
+            updateAutoClicker();
         }
     }
     // Adicionar mais upgrades aqui
@@ -139,16 +149,24 @@ function setupUpgrades() {
     });
 }
 
+function recalculateAutoClickPower() {
+    autoClickPower = upgrades.reduce((total, upg) => {
+        if (typeof upg.getAutoClickValue === "function") {
+            return total + upg.getAutoClickValue();
+        }
+        return total;
+    }, 0);
+
+    updateAutoClicker();
+}
+
 function updateAutoClicker() {
     if (autoClickInterval) clearInterval(autoClickInterval);
 
-    const helper = upgrades.find(u => u.id === "upgrade1");
-    let clicksPerSecond = helper.levelsValue[helper.level] || 0;
-
     autoClickInterval = setInterval(() => {
-        contador += clicksPerSecond;
+        contador += autoClickPower;
         updateCounterDisplay();
-    }, 1000);
+    }, 500);
 }
 
 setupUpgrades();
