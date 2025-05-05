@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <!-- Option 1: Include in HTML -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <script src="script.js" defer></script>
     <title>The Clicker</title>
 </head>
+
 <body>
     <div class="container">
         <div class="info">
@@ -28,6 +30,25 @@
         <div class="botao">
             <button class="button" id="button">Clique aqui</button>
         </div>
-    </div>
+        <div class="upgrades" id="upgrades" style="display: none;">
+            <h2>Upgrades</h2>
+            <div class="upgrade" id="upgrade1">
+                <button class="upgrade-button" id="upgrade1-button"><i class="bi bi-hand-index"></i> Clicker
+                    Helper</button>
+                <span class="upgrade-cost" id="upgrade1-cost">10</span>
+            </div>
+            <div class="upgrade" id="upgrade2">
+                <button class="upgrade-button" id="upgrade2-button"><i class="bi bi-badge-ad"></i>
+                    Advertisement</button>
+                <span class="upgrade-cost" id="upgrade2-cost">20</span>
+            </div>
+            <div class="upgrade" id="upgrade3">
+                <button class="upgrade-button" id="upgrade3-button">
+                    <i class="bi bi-battery-charging"></i> Turbo Boost
+                </button>
+                <span class="upgrade-cost" id="upgrade3-cost">50</span>
+            </div>
+        </div>
 </body>
+
 </html>

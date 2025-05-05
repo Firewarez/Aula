@@ -1,5 +1,8 @@
-# Aula
+# Clicker
 Repositório da atividade para a aula de Tópicos Especiais em Sistemas de Internet
+
+# Acesso
+Você pode acessar o site clicando aqui.
 
 ## Instalação
 > Apenas um projeto simples de html nada realmente precisa ser instalado

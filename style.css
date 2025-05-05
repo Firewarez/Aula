@@ -78,6 +78,7 @@
 
 .botao{
     position: fixed;
+    z-index: 50;
 }
 
 .contadora{
@@ -104,4 +105,48 @@
     box-shadow: 0px 2px 0px #d35400;
     position: relative;
     top: 2px;
+}
+
+.upgrades {
+    position: fixed;
+    right: 20px;
+    top: 100px; /* Mesmo valor do .titulo.top */
+    background-color: #34495e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    color: #ecf0f1;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 200px;
+}
+
+.upgrade-button{
+    color: #ecf0f1;
+    font-size: 17px;
+    background-color: #e62253;
+    border: 1px solid #f312a8;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0px 6px 0px #d3002e;
+    transition: all 0.1s;
+    width: 150px;
+    transition: all 0.1s;
+}
+
+.upgrade-button:active {
+    box-shadow: 0px 2px 0px #d3002e;
+    position: relative;
+    top: 2px;
+}
+
+.upgrade-button:disabled {
+    background-color: #7f8c8d;
+    box-shadow: none;
+    cursor: not-allowed;
+    box-shadow: none;
 }
