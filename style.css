@@ -19,14 +19,14 @@
     color: #ecf0f1;
     font-size: 30px;
     margin-bottom: 20px;
-    top: 0px;
+    top: 100px;
 }
 
 .botao{
     position: fixed;
 }
 
-.contador{
+.contadora{
     top: -100px;
     position: relative;
     color: #ecf0f1;
