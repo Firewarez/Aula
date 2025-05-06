@@ -40,6 +40,8 @@ let clickerHelperMax = 5;
 let autoClickInterval;
 let autoClickValue = 1;
 let upgrade1Cost = 10;
+let autoClickerAtivado = false;
+
 
 const upgrade1Button = document.getElementById("upgrade1-button");
 const upgrade1CostSpan = document.getElementById("upgrade1-cost");
@@ -67,18 +69,17 @@ const upgrades = [
         buttonId: "upgrade1-button",
         costSpanId: "upgrade1-cost",
         name: "Clicker Helper",
-        baseCost: 10,
-        currentCost: 10,
-        costMultiplier: 1.7,
+        baseCost: 50,
+        currentCost: 50,
+        costMultiplier: 2.37,
         level: 0,
-        levelsValue: [0, 1, 2, 3, 10, 15],
+        levelsValue: [0, 11, 30, 75, 122, 239],
         maxLevel: 5,
         getAutoClickValue: function () {
-            return this.levelsValue[this.level] || 0;
+            return this.levelsValue.slice(0, this.level + 1).reduce((a, b) => a + b, 0);
         },
         effect: function () {
             recalculateAutoClickPower();
-            updateAutoClicker(); // o efeito deste upgrade
         }
     },
     {
@@ -86,13 +87,14 @@ const upgrades = [
         buttonId: "upgrade2-button",
         costSpanId: "upgrade2-cost",
         name: "Advertisement",
-        baseCost: 20,
-        currentCost: 20,
-        costMultiplier: 2.0,
+        baseCost: 950,
+        currentCost: 950,
+        costMultiplier: 3.659,
         level: 0,
+        levelsValue: [0, 178, 221, 399],
         maxLevel: 3,
         getAutoClickValue: function () {
-            return this.level * 5; // 5 cliques por nível
+            return this.levelsValue.slice(0, this.level + 1).reduce((a, b) => a + b, 0);
         },
         effect: function () {
             recalculateAutoClickPower();
@@ -103,20 +105,78 @@ const upgrades = [
         buttonId: "upgrade3-button",
         costSpanId: "upgrade3-cost",
         name: "Turbo Boost",
-        baseCost: 50,
-        currentCost: 50,
-        costMultiplier: 2,
+        baseCost: 5750,
+        currentCost: 5750,
+        costMultiplier: 4.88,
         level: 0,
+        levelsValue: [0, 589, 777, 1024],
         maxLevel: 3,
         getAutoClickValue: function () {
-            return this.level * 10; // 10 cliques por nível
+            return this.levelsValue.slice(0, this.level + 1).reduce((a, b) => a + b, 0);
         },
         effect: function () {
             recalculateAutoClickPower();
             document.body.style.backgroundColor = "#1abc9c";
-            updateAutoClicker();
+        }
+    },
+    {
+        id: "upgrade4",
+        buttonId: "upgrade4-button",
+        costSpanId: "upgrade4-cost",
+        name: "Turbo Boost",
+        baseCost: 100000,
+        currentCost: 100000,
+        costMultiplier: 2.78,
+        level: 0,
+        levelsValue: [0, 58, 97, 134],
+        maxLevel: 3,
+        getAutoClickValue: function () {
+            return this.levelsValue.slice(0, this.level + 1).reduce((a, b) => a + b, 0);
+        },
+        effect: function () {
+            recalculateAutoClickPower();
+            document.body.style.backgroundColor = "#1abc9c";
+        }
+    },
+    {
+        id: "upgrade5",
+        buttonId: "upgrade5-button",
+        costSpanId: "upgrade5-cost",
+        name: "Turbo Boost",
+        baseCost: 1500000,
+        currentCost: 1500000,
+        costMultiplier: 2.78,
+        level: 0,
+        levelsValue: [0, 58, 97, 134],
+        maxLevel: 3,
+        getAutoClickValue: function () {
+            return this.levelsValue.slice(0, this.level + 1).reduce((a, b) => a + b, 0);
+        },
+        effect: function () {
+            recalculateAutoClickPower();
+            document.body.style.backgroundColor = "#1abc9c";
+        }
+    },
+    {
+        id: "upgrade6",
+        buttonId: "upgrade6-button",
+        costSpanId: "upgrade6-cost",
+        name: "Turbo Boost",
+        baseCost: 10000000,
+        currentCost: 10000000,
+        costMultiplier: 2.78,
+        level: 0,
+        levelsValue: [0, 58, 97, 134],
+        maxLevel: 3,
+        getAutoClickValue: function () {
+            return this.levelsValue.slice(0, this.level + 1).reduce((a, b) => a + b, 0);
+        },
+        effect: function () {
+            recalculateAutoClickPower();
+            document.body.style.backgroundColor = "#1abc9c";
         }
     }
+
     // Adicionar mais upgrades aqui
 ];
 
@@ -133,6 +193,10 @@ function setupUpgrades() {
                 contador -= upg.currentCost;
                 upg.level++;
                 updateCounterDisplay();
+
+                if (!autoClickerAtivado) {
+                    autoClickerAtivado = true;
+                }
 
                 upg.effect();
 
@@ -152,21 +216,34 @@ function setupUpgrades() {
 function recalculateAutoClickPower() {
     autoClickPower = upgrades.reduce((total, upg) => {
         if (typeof upg.getAutoClickValue === "function") {
-            return total + upg.getAutoClickValue();
+            const val = upg.getAutoClickValue();
+            console.log(upg.id, "level:", upg.level, "auto:", val);
+            return total + val;
         }
         return total;
     }, 0);
 
+    if (autoClickerAtivado) {
+        autoClickPower += 1;
+    }
+
     updateAutoClicker();
 }
 
-function updateAutoClicker() {
-    if (autoClickInterval) clearInterval(autoClickInterval);
 
-    autoClickInterval = setInterval(() => {
-        contador += autoClickPower;
-        updateCounterDisplay();
-    }, 500);
+function updateAutoClicker() {
+    if (autoClickInterval){
+        clearInterval(autoClickInterval);
+        autoClickInterval = null;
+    } 
+
+    if (autoClickPower > 0) {
+        autoClickInterval = setInterval(() => {
+            contador += autoClickPower;
+            updateCounterDisplay();
+            console.log("AutoClick! +", autoClickPower);
+        }, 1000);
+    }
 }
 
 setupUpgrades();

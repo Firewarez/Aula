@@ -120,7 +120,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 200px;
+    justify-content: space-between;
+    min-width: 300px;
+    min-height: 62px;
+}
+
+.upgrade{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .upgrade-button{
