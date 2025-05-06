@@ -166,7 +166,7 @@ const upgrades = [
         currentCost: 10000000,
         costMultiplier: 2.78,
         level: 0,
-        levelsValue: [0, 58, 97, 134],
+        levelsValue: [0, 12839757],
         maxLevel: 3,
         getAutoClickValue: function () {
             return this.levelsValue.slice(0, this.level + 1).reduce((a, b) => a + b, 0);
