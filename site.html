@@ -20,21 +20,36 @@
                 <p>Seus dados não são salvos, caso feche ou reinicie a página seu progresso será perdido</p>
             </div>
         </div>
+
         <div class="titulo">
             <h1>Clique no botão para começar</h1>
         </div>
+
         <div class="contadora" id="contadora" style="display: none;">
             <span id="contador"></span>
         </div>
+
         <div class="botao">
             <button class="button" id="button">Clique aqui</button>
         </div>
+
+        <div id="video-modal"
+            style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center;">
+            <div style="position:relative;">
+                <button id="close-video"
+                    style="position:absolute; top:-40px; right:0; font-size:2rem; background:none; border:none; color:white; cursor:pointer;">&times;</button>
+                <iframe id="special-video" width="640" height="360"
+                    src="https://www.youtube.com/embed/Ewy53KTH-ok?start=6893&autoplay=1" frameborder="0"
+                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+
         <div class="upgrades" id="upgrades" style="display: none;">
             <h2>Upgrades</h2>
             <div class="upgrade coin">
                 <span></span>
-                <p style="font-size: 25px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-cash-coin" viewBox="0 0 16 16">
+                <p style="font-size: 25px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
                             d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0" />
                         <path
@@ -74,7 +89,7 @@
             </div>
             <div class="upgrade" id="upgrade6">
                 <button class="upgrade-button" id="upgrade6-button">
-                    <img src="icons8-gps-signal.gif" style="mix-blend-mode: multiply;" width="25px"> Live on Air
+                    <img src="icons8-gps-signal.gif" style="mix-blend-mode: multiply;" width="25px"> Monster Live
                 </button>
                 <span class="upgrade-cost" id="upgrade6-cost">50</span>
             </div>

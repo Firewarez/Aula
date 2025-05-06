@@ -174,11 +174,39 @@ const upgrades = [
         effect: function () {
             recalculateAutoClickPower();
             document.body.style.backgroundColor = "#1abc9c";
+            mostrarVideoEspecial();
         }
     }
 
     // Adicionar mais upgrades aqui
 ];
+
+function mostrarVideoEspecial() {
+    const modal = document.getElementById('video-modal');
+    const video = document.getElementById('special-video');
+    modal.style.display = 'flex';
+    video.currentTime = 0;
+    video.play();
+}
+
+
+document.getElementById('close-video').addEventListener('click', function() {
+    const modal = document.getElementById('video-modal');
+    const video = document.getElementById('special-video');
+    modal.style.display = 'none';
+    video.pause();
+    video.currentTime = 0;
+});
+
+
+document.getElementById('video-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        this.style.display = 'none';
+        const video = document.getElementById('special-video');
+        video.pause();
+        video.currentTime = 0;
+    }
+});
 
 function setupUpgrades() {
     upgrades.forEach(upg => {
