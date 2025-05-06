@@ -1,5 +1,6 @@
 # Clicker
-Repositório da atividade para a aula de Tópicos Especiais em Sistemas de Internet
+Webgame simples baseado em jogos Clicker
+Desenvolvido para testar conhecimentos em versionamento e conhecimento de desenvolvimento
 
 # Acesso
 Você pode acessar o site clicando **[aqui](https://justanotherclicker.netlify.app/)**
