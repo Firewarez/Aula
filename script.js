@@ -107,7 +107,7 @@ const upgrades = [
         name: "Turbo Boost",
         baseCost: 5750,
         currentCost: 5750,
-        costMultiplier: 4.88,
+        costMultiplier: 4.85,
         level: 0,
         levelsValue: [0, 589, 777, 1024],
         maxLevel: 3,
@@ -126,9 +126,9 @@ const upgrades = [
         name: "Turbo Boost",
         baseCost: 100000,
         currentCost: 100000,
-        costMultiplier: 2.78,
+        costMultiplier: 4.78,
         level: 0,
-        levelsValue: [0, 58, 97, 134],
+        levelsValue: [0, 4903, 7397, 13400],
         maxLevel: 3,
         getAutoClickValue: function () {
             return this.levelsValue.slice(0, this.level + 1).reduce((a, b) => a + b, 0);
@@ -145,9 +145,9 @@ const upgrades = [
         name: "Turbo Boost",
         baseCost: 1500000,
         currentCost: 1500000,
-        costMultiplier: 2.78,
+        costMultiplier: 7.34,
         level: 0,
-        levelsValue: [0, 58, 97, 134],
+        levelsValue: [0, 19058, 25097, 39134],
         maxLevel: 3,
         getAutoClickValue: function () {
             return this.levelsValue.slice(0, this.level + 1).reduce((a, b) => a + b, 0);
