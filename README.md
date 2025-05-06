@@ -2,7 +2,7 @@
 Repositório da atividade para a aula de Tópicos Especiais em Sistemas de Internet
 
 # Acesso
-Você pode acessar o site clicando aqui.
+Você pode acessar o site clicando **[aqui](https://justanotherclicker.netlify.app/)**
 
 ## Instalação
 > Apenas um projeto simples de html nada realmente precisa ser instalado
